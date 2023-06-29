@@ -124,7 +124,7 @@ this.FeatureBackground();
         [NUnit.Framework.TestCaseAttribute("password", "Password did not conform with policy: Password must have uppercase characters", null)]
         [NUnit.Framework.TestCaseAttribute("PASSWORD", "Password did not conform with policy: Password must have lowercase characters", null)]
         [NUnit.Framework.TestCaseAttribute("Passw0rd", "Password did not conform with policy: Password must have symbol characters", null)]
-        [NUnit.Framework.TestCaseAttribute("Passw0r", "Password did not conform with policy: Password must have minimum 8 characters", null)]
+        [NUnit.Framework.TestCaseAttribute("Passw0r", "Password did not conform with policy: Password must have 8 characters minimum", null)]
         public void AVisitorCannotRegisterWithInvalidPassword(string password, string requirements, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;

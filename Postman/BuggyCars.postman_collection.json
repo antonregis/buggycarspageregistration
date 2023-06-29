@@ -1,0 +1,72 @@
+{
+	"info": {
+		"_postman_id": "b07ff353-9e6c-4dd2-8b56-a0504e96088d",
+		"name": "BuggyCars",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8057154"
+	},
+	"item": [
+		{
+			"name": "A visitor can register with valid password",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Assert that the request has been fulfilled and has resulted in one or more new resources being created.\r",
+							"pm.test(\"Status code is 201. A new resoucre has been created.\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"//Assert that the response time is adequate\r",
+							"pm.test(\"Response time is less than 1700ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1700);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// Generate a unique username every time this request is ran.\r",
+							"var generatedUsername = \"antonregis\" + pm.variables.replaceIn('{{$timestamp}}');\r",
+							"pm.variables.set(\"username\", generatedUsername);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"username\": \"{{username}}\",\r\n\t\"firstName\":\"Anthony\",\r\n\t\"lastName\":\"Regis\",\r\n\t\"password\":\"Passw0rd_\",\r\n\t\"confirmPassword\":\"Passw0rd_\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://k51qryqov3.execute-api.ap-southeast-2.amazonaws.com/prod/users",
+					"protocol": "https",
+					"host": [
+						"k51qryqov3",
+						"execute-api",
+						"ap-southeast-2",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"prod",
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
